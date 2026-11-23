@@ -381,6 +381,8 @@ let _targets: [Target] = targets.map { $0.toTarget() }
 
 let package = Package(
   name: "swift-collections",
+  // slowhand patch: iOS 16+ so arm64e objects get class_ro_t pointer signing.
+  platforms: [.macOS(.v13), .iOS(.v16), .macCatalyst(.v16), .tvOS(.v16), .watchOS(.v9), .visionOS(.v1)],
   products: _products,
   traits: _traits,
   targets: _targets)
